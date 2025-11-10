@@ -5,14 +5,20 @@ let randomColor = document.querySelector('.randomColor')
 let curentColorValue = document.querySelector('.curentColorValue')
 
 function themeColor(color) {
-    body.style.backgroundColor = color
-    if (body.style.backgroundColor === 'white') {
-        if (color === 'black') {
-            body.style.color = 'white'
-        }
-    }
+    body.style.backgroundColor = color;
+    const isDark = ['black', 'purple', 'navy', '#222', 'gray'].includes(color);
+    // console.log(isDark)
+    body.style.color = isDark ? 'white' : 'black';
+    // if (body.style.color === isDark) {
+    //     body.style.color = 'white'
+    // } else {
+    //     body.style.color = 'black'
+    // }
+    // Also update input & button background for contrast
+    inputColorField.style.backgroundColor = isDark ? '#fff' : '#333';
+    inputColorField.style.color = isDark ? '#000' : '#fff';
 }
-themeColor('light')
+
 
 let handleApplyColor = () => {
     let inputColor = inputColorField.value
